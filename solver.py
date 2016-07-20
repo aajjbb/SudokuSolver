@@ -95,8 +95,12 @@ def read_board():
     for i in range(9):
         board.append(list(input()))
 
+        if board[i][-1] == '\r':
+            del board[i][-1]
+
         if len(board[i]) != 9:
-            raise Exception()
+            print(board[i])
+            raise Exception("Number of elements in row {0} is {1}, which is different from 9 from standard Sudoku Game".format(i, len(board[i])))
 
         for j in range(9):
             if board[i][j] == '.':
